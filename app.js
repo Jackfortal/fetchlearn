@@ -41,3 +41,18 @@
 
 // buscarDados();
 
+fetch ("https://narutodb.xyz/api/character")
+.then(response => response.json())
+.then(data => {
+    for (let index = 0; index < data.characters.length; index++) {
+        let corpo = document.querySelector(".tableBody")
+        let linha = document.createElement("tr")
+        linha.innerHTML = `
+            <td>${data.characters[index].id}</td>
+            <td>${data.characters[index].name}</td>
+            <td>${data.characters[index].jutsu}</td>
+            <td><img src="${data.characters[index].images[0]}" alt="${data.characters[index].name}"></td>
+        `
+        corpo.appendChild(linha)
+    }
+})
